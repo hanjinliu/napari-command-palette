@@ -1,0 +1,21 @@
+name: napari-command-palette
+display_name: Command palette
+contributions:
+  commands:
+    - id: napari-command-palette.make_qwidget
+      python_name: napari_command_palette._widget:ExampleQWidget
+      title: Make example QWidget
+    - id: napari-command-palette.make_magic_widget
+      python_name: napari_command_palette._widget:example_magic_widget
+      title: Make example magic widget
+    - id: napari-command-palette.make_func_widget
+      python_name: napari_command_palette._widget:example_function_widget
+      title: Make example function widget
+  widgets:
+    - command: napari-command-palette.make_qwidget
+      display_name: Example QWidget
+    - command: napari-command-palette.make_magic_widget
+      display_name: Example Magic Widget
+    - command: napari-command-palette.make_func_widget
+      autogenerate: true
+      display_name: Example Function Widget
