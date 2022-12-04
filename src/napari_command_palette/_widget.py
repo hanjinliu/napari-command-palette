@@ -1,46 +1,27 @@
-"""
-This module is an example of a barebones QWidget plugin for napari
+from __future__ import annotations
 
-It implements the Widget specification.
-see: https://napari.org/stable/plugins/guides.html?#widgets
+from qt_command_palette import get_palette
+from qtpy import QtWidgets as QtW
 
-Replace code below according to your needs.
-"""
-from typing import TYPE_CHECKING
-
-from magicgui import magic_factory
-from qtpy.QtWidgets import QHBoxLayout, QPushButton, QWidget
-
-if TYPE_CHECKING:
-    import napari
+palette = get_palette("napari")
 
 
-class ExampleQWidget(QWidget):
-    # your QWidget.__init__ can optionally request the napari viewer instance
-    # in one of two ways:
-    # 1. use a parameter called `napari_viewer`, as done here
-    # 2. use a type annotation of 'napari.viewer.Viewer' for any parameter
-    def __init__(self, napari_viewer):
+class QNapariCommandPalette(QtW.QWidget):
+    def __init__(self) -> None:
         super().__init__()
-        self.viewer = napari_viewer
+        self.setLayout(QtW.QVBoxLayout())
+        button = QtW.QPushButton("Show Command Palette")
+        self.layout().addWidget(button)
+        button.clicked.connect(self.show_command_palette)
+        self._installed = False
 
-        btn = QPushButton("Click me!")
-        btn.clicked.connect(self._on_click)
-
-        self.setLayout(QHBoxLayout())
-        self.layout().addWidget(btn)
-
-    def _on_click(self):
-        print("napari has", len(self.viewer.layers), "layers")
-
-
-@magic_factory
-def example_magic_widget(img_layer: "napari.layers.Image"):
-    print(f"you have selected {img_layer}")
-
-
-# Uses the `autogenerate: true` flag in the plugin manifest
-# to indicate it should be wrapped as a magicgui to autogenerate
-# a widget.
-def example_function_widget(img_layer: "napari.layers.Image"):
-    print(f"you have selected {img_layer}")
+    def show_command_palette(self):
+        ins = self
+        while parent := ins.parent():
+            ins = parent
+            if isinstance(ins, QtW.QMainWindow):
+                break
+        if not self._installed:
+            palette.install(ins, "Ctrl+Shift+@")
+            self._installed = True
+        palette.get_widget(ins).show()

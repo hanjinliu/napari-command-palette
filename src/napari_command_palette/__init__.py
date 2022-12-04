@@ -1,7 +1,6 @@
 __version__ = "0.0.1"
-from ._widget import ExampleQWidget, example_magic_widget
 
-__all__ = (
-    "ExampleQWidget",
-    "example_magic_widget",
-)
+from . import _defaults  # noqa
+from ._widget import QNapariCommandPalette
+
+__all__ = ("QNapariCommandPalette",)
