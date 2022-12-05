@@ -11,6 +11,17 @@ def install(
     viewer: napari.Viewer | None = None,
     keys: str = "Ctrl+Shift+@",
 ):
+    """
+    Install command palette to napari viewer.
+
+    Parameters
+    ----------
+    viewer : napari.Viewer, optional
+        napari viewer to install command palette to. By default current
+        viewer is used.
+    keys : str, default "Ctrl+Shift+@"optional
+        Key combination to open command palette.
+    """
     if viewer is None:
         viewer = napari.current_viewer()
         if viewer is None:
@@ -21,6 +32,5 @@ def install(
         ins = parent
         if isinstance(ins, QtW.QMainWindow):
             palette.install(ins, keys)
-            palette.get_widget(ins).show()
             return
     raise RuntimeError("No MainWindow found")
