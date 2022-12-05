@@ -2,6 +2,6 @@ __version__ = "0.0.1"
 
 from . import _defaults  # noqa
 from . import _plugins  # noqa
-from ._widget import QNapariCommandPalette
+from ._install import install
 
-__all__ = ("QNapariCommandPalette",)
+__all__ = ["install"]

@@ -2,9 +2,6 @@ name: napari-command-palette
 display_name: Command palette
 contributions:
   commands:
-    - id: napari-command-palette.make_qwidget
-      python_name: napari_command_palette._widget:QNapariCommandPalette
+    - id: napari-command-palette.install
+      python_name: napari_command_palette:install
       title: Command palette
-  widgets:
-    - command: napari-command-palette.make_qwidget
-      display_name: Command palette
