@@ -7,6 +7,7 @@ from qt_command_palette import get_palette, get_storage
 palette = get_palette("napari")
 storage = get_storage("napari")
 
+# define variable providers
 storage.mark_getter("viewer")(napari.current_viewer)
 storage.mark_getter("open_path")(
     lambda: show_file_dialog(mode="r", caption="Open file")
@@ -14,7 +15,7 @@ storage.mark_getter("open_path")(
 storage.mark_getter("open_paths")(
     lambda: show_file_dialog(mode="rm", caption="Open files")
 )
-storage.mark_getter("open_dirs")(
+storage.mark_getter("open_dir")(
     lambda: show_file_dialog(mode="d", caption="Open folder")
 )
 storage.mark_getter("save_path")(

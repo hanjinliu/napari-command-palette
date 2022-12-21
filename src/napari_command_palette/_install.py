@@ -9,7 +9,7 @@ palette = get_palette("napari")
 
 def install(
     viewer: napari.Viewer | None = None,
-    keys: str = "Ctrl+Shift+@",
+    keys: str = "F1",
 ):
     """
     Install command palette to napari viewer.
@@ -19,8 +19,8 @@ def install(
     viewer : napari.Viewer, optional
         napari viewer to install command palette to. By default current
         viewer is used.
-    keys : str, default "Ctrl+Shift+@"optional
-        Key combination to open command palette.
+    keys : str, default "F1"
+        Key sequence to open command palette.
     """
     if viewer is None:
         viewer = napari.current_viewer()
