@@ -7,7 +7,9 @@
 [![codecov](https://codecov.io/gh/hanjinliu/napari-command-palette/branch/main/graph/badge.svg)](https://codecov.io/gh/hanjinliu/napari-command-palette)
 [![napari hub](https://img.shields.io/endpoint?url=https://api.napari-hub.org/shields/napari-command-palette)](https://napari-hub.org/plugins/napari-command-palette)
 
-Command palette for napari
+Command palette for napari.
+
+:warning: Not ready as a plugin. Clone and run `$ python launch.py`.
 
 ----------------------------------
 
